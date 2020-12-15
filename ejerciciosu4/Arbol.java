@@ -25,24 +25,24 @@ public class Arbol {
          return Raiz;
      }
 
-     public void Agregar(Nodo n, String nom, int año) {
-         Nodo nuevo = new Nodo(año, nom);
+     public void Agregar(Nodo n, String nombre, int año) {
+         Nodo nue = new Nodo(año, nombre);
          if (estaVacio()) {
-             Raiz = nuevo;
+             Raiz = nue;
              cantidadNodos++;
          } else if (año <= n.Año) {
              if (n.hIzquierdo == null) {
-                 n.hIzquierdo = nuevo;
+                 n.hIzquierdo = nue;
                  cantidadNodos++;
              } else {
-                 Agregar(n.hIzquierdo, nom, año);
+                 Agregar(n.hIzquierdo, nombre, año);
              }
          } else {
              if (n.hDerecho == null) {
-                 n.hDerecho = nuevo;
+                 n.hDerecho = nue;
                  cantidadNodos++;
              } else {
-                 Agregar(n.hDerecho, nom, año);
+                 Agregar(n.hDerecho, nombre, año);
              }
          }
      }
@@ -104,9 +104,9 @@ public class Arbol {
 
 
     public int Resta() {
-        Nodo personaJoven = BuscarMayor(Raiz);
-        Nodo personaAdulta = BuscarMenor(Raiz);
-        int resta = personaAdulta.Edad - personaJoven.Edad;
+        Nodo edadJoven = BuscarMayor(Raiz);
+        Nodo edadAdulta = BuscarMenor(Raiz);
+        int resta = edadAdulta.Edad - edadJoven.Edad;
         return resta;
     }
 
@@ -120,9 +120,9 @@ public class Arbol {
         return sumaEdad = edades(Raiz);
     }
 
-    private int edades(Nodo r) {
-        if (r != null) {
-            return r.Edad + (edades(r.hIzquierdo) + edades(r.hDerecho));
+    private int edades(Nodo n) {
+        if (n != null) {
+            return n.Edad + (edades(n.hIzquierdo) + edades(n.hDerecho));
         } else {
             return 0;
         }
@@ -134,9 +134,9 @@ public class Arbol {
     }
 
 
-    public int Altura(Nodo r) {
-        if (r != null) {
-            return 1 + (Math.max(Altura(r.hIzquierdo), Altura(r.hDerecho)));
+    public int Altura(Nodo n) {
+        if (n != null) {
+            return 1 + (Math.max(Altura(n.hIzquierdo), Altura(n.hDerecho)));
         } else {
             return 1;
         }
